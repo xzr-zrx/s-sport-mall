@@ -1,7 +1,9 @@
 services:
+  # ---- Java 后端 ----
   - type: web
     name: s-pay-mall-api
     runtime: docker
+    plan: free
     dockerfilePath: ./s-pay-mall-app/Dockerfile
     dockerContext: .
     healthCheckPath: /actuator/health
@@ -13,7 +15,10 @@ services:
       - key: DATABASE_PASSWORD
         sync: false
       - key: REDIS_URL
-        sync: false
+        fromService:
+          type: keyvalue
+          name: s-pay-mall-redis
+          property: connectionString
       - key: JWT_SECRET
         generateValue: true
       - key: CORS_ALLOWED_ORIGINS
@@ -41,9 +46,11 @@ services:
       - key: JOB_TOKEN
         generateValue: true
 
+  # ---- Vue 前端（静态站点） ----
   - type: web
     name: s-pay-mall-web
     runtime: static
+    plan: free
     rootDir: s-pay-mall-web
     buildCommand: npm ci && npm run build
     staticPublishPath: dist
@@ -54,3 +61,8 @@ services:
       - type: rewrite
         source: /*
         destination: /index.html
+
+  # ---- Redis（免费 Key Value） ----
+  - type: keyvalue
+    name: s-pay-mall-redis
+    plan: free
