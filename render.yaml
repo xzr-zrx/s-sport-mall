@@ -50,7 +50,6 @@ services:
   - type: web
     name: s-pay-mall-web
     runtime: static
-    plan: free
     rootDir: s-pay-mall-web
     buildCommand: npm ci && npm run build
     staticPublishPath: dist
