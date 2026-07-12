@@ -4,7 +4,6 @@ services:
     name: s-pay-mall-api
     runtime: docker
     plan: free
-    ipAllowList: []
     dockerfilePath: ./s-pay-mall-app/Dockerfile
     dockerContext: .
     healthCheckPath: /actuator/health
@@ -67,3 +66,4 @@ services:
   - type: keyvalue
     name: s-pay-mall-redis
     plan: free
+    ipAllowList: []
