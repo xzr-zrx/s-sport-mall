@@ -1,0 +1,29 @@
+# Java
+**/target/
+*.class
+*.jar
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Node
+s-pay-mall-web/node_modules/
+s-pay-mall-web/dist/
+
+# Secrets / local config
+.env
+.env.*
+!.env.example
+application-local.yml
+*.pem
+*.key
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

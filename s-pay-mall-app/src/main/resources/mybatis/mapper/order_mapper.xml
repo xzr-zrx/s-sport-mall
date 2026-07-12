@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bugstack.infrastructure.dao.IMallOrderDao">
+    <resultMap id="orderMap" type="cn.bugstack.infrastructure.dao.po.MallOrder">
+        <id column="id" property="id"/><result column="order_no" property="orderNo"/>
+        <result column="user_id" property="userId"/><result column="source" property="source"/>
+        <result column="recipient_name" property="recipientName"/><result column="recipient_phone" property="recipientPhone"/>
+        <result column="shipping_address" property="shippingAddress"/><result column="total_amount" property="totalAmount"/>
+        <result column="pay_amount" property="payAmount"/><result column="status" property="status"/>
+        <result column="expire_at" property="expireAt"/><result column="pay_time" property="payTime"/>
+        <result column="close_time" property="closeTime"/><result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+    <resultMap id="itemMap" type="cn.bugstack.infrastructure.dao.po.MallOrderItem">
+        <id column="id" property="id"/><result column="order_no" property="orderNo"/>
+        <result column="product_id" property="productId"/><result column="product_name" property="productName"/>
+        <result column="product_cover" property="productCover"/><result column="unit_price" property="unitPrice"/>
+        <result column="quantity" property="quantity"/><result column="item_amount" property="itemAmount"/>
+    </resultMap>
+    <insert id="insertOrder" parameterType="cn.bugstack.infrastructure.dao.po.MallOrder" useGeneratedKeys="true" keyProperty="id">
+        insert into mall_order(order_no,user_id,source,recipient_name,recipient_phone,shipping_address,total_amount,pay_amount,status,expire_at,create_time,update_time)
+        values(#{orderNo},#{userId},#{source},#{recipientName},#{recipientPhone},#{shippingAddress},#{totalAmount},#{payAmount},#{status},#{expireAt},now(),now())
+    </insert>
+    <insert id="insertItem" parameterType="cn.bugstack.infrastructure.dao.po.MallOrderItem" useGeneratedKeys="true" keyProperty="id">
+        insert into order_item(order_no,product_id,product_name,product_cover,unit_price,quantity,item_amount)
+        values(#{orderNo},#{productId},#{productName},#{productCover},#{unitPrice},#{quantity},#{itemAmount})
+    </insert>
+    <select id="findByOrderNo" resultMap="orderMap">select * from mall_order where order_no=#{orderNo} limit 1</select>
+    <select id="findUserOrder" resultMap="orderMap">select * from mall_order where user_id=#{userId} and order_no=#{orderNo} limit 1</select>
+    <select id="listByUser" resultMap="orderMap">select * from mall_order where user_id=#{userId} order by id desc limit 100</select>
+    <select id="listItems" resultMap="itemMap">select * from order_item where order_no=#{orderNo} order by id</select>
+    <update id="markPaying">update mall_order set status='PAYING',update_time=now() where order_no=#{orderNo} and status='PENDING_PAYMENT'</update>
+    <update id="markPaid">
+        update mall_order set status='PAID',pay_time=now(),update_time=now()
+        where order_no=#{orderNo} and status in ('PENDING_PAYMENT','PAYING')
+    </update>
+    <update id="closeOrder">
+        update mall_order set status=#{status},close_time=now(),update_time=now()
+        where order_no=#{orderNo} and status in ('PENDING_PAYMENT','PAYING')
+    </update>
+    <select id="listNeedReconcileOrders" resultType="java.lang.String">
+        select order_no from mall_order where status='PAYING' and update_time &lt;= date_sub(now(),interval 1 minute)
+        order by id limit 20
+    </select>
+    <select id="listTimeoutOrders" resultType="java.lang.String">
+        select order_no from mall_order where status in ('PENDING_PAYMENT','PAYING') and expire_at &lt;= now()
+        order by id limit 50
+    </select>
+</mapper>

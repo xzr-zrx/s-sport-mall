@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bugstack.infrastructure.dao.IProductDao">
+    <resultMap id="productMap" type="cn.bugstack.infrastructure.dao.po.Product">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="category" property="category"/>
+        <result column="description" property="description"/>
+        <result column="cover_url" property="coverUrl"/>
+        <result column="price" property="price"/>
+        <result column="stock" property="stock"/>
+        <result column="status" property="status"/>
+        <result column="version" property="version"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <sql id="productFilters">
+        status = 'ON_SALE'
+        <if test="keyword != null and keyword != ''">
+            and (name like concat('%', #{keyword}, '%') or description like concat('%', #{keyword}, '%'))
+        </if>
+        <if test="category != null and category != ''">
+            and category = #{category}
+        </if>
+    </sql>
+
+    <select id="searchOnSale" resultMap="productMap">
+        select * from product
+        where <include refid="productFilters"/>
+        <choose>
+            <when test="sort == 'PRICE_ASC'">order by price asc, id desc</when>
+            <when test="sort == 'PRICE_DESC'">order by price desc, id desc</when>
+            <when test="sort == 'NEWEST'">order by create_time desc, id desc</when>
+            <otherwise>order by id desc</otherwise>
+        </choose>
+        limit #{offset}, #{limit}
+    </select>
+
+    <select id="countOnSale" resultType="long">
+        select count(*) from product where <include refid="productFilters"/>
+    </select>
+
+    <select id="findById" resultMap="productMap">select * from product where id=#{id} limit 1</select>
+
+    <insert id="insert" parameterType="cn.bugstack.infrastructure.dao.po.Product" useGeneratedKeys="true" keyProperty="id">
+        insert into product(name,category,description,cover_url,price,stock,status,version,create_time,update_time)
+        values(#{name},#{category},#{description},#{coverUrl},#{price},#{stock},#{status},0,now(),now())
+    </insert>
+
+    <update id="update" parameterType="cn.bugstack.infrastructure.dao.po.Product">
+        update product set name=#{name},category=#{category},description=#{description},cover_url=#{coverUrl},
+        price=#{price},stock=#{stock},status=#{status},update_time=now() where id=#{id}
+    </update>
+
+    <update id="decreaseStock">
+        update product set stock=stock-#{quantity},version=version+1,update_time=now()
+        where id=#{id} and status='ON_SALE' and stock &gt;= #{quantity}
+    </update>
+    <update id="increaseStock">update product set stock=stock+#{quantity},version=version+1,update_time=now() where id=#{id}</update>
+</mapper>

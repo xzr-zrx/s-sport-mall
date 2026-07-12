@@ -1,0 +1,53 @@
+services:
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: s_pay_mall
+    ports: ["3307:3306"]
+    volumes: ["mysql-data:/var/lib/mysql"]
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-proot"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+    volumes: ["redis-data:/data"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  backend:
+    build:
+      context: .
+      dockerfile: s-pay-mall-app/Dockerfile
+    environment:
+      PORT: 8091
+      DATABASE_URL: jdbc:mysql://mysql:3306/s_pay_mall?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: root
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: local-development-jwt-secret-change-before-production
+      MOCK_PAYMENT_SECRET: local-development-mock-payment-secret-change-before-production
+      CORS_ALLOWED_ORIGINS: http://localhost:5173
+      BACKEND_PUBLIC_URL: http://localhost:8091
+      FRONTEND_URL: http://localhost:5173
+      ALIPAY_ENABLED: "false"
+    ports: ["8091:8091"]
+    depends_on:
+      mysql: { condition: service_healthy }
+      redis: { condition: service_healthy }
+
+  frontend:
+    build: ./s-pay-mall-web
+    ports: ["5173:80"]
+    depends_on: [backend]
+
+volumes:
+  mysql-data:
+  redis-data:

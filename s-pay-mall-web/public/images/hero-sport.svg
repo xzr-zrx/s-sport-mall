@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520">
+<defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff5a36"/><stop offset="1" stop-color="#ffb36b"/></linearGradient><filter id="s"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-opacity=".22"/></filter></defs>
+<circle cx="445" cy="255" r="205" fill="url(#g1)" opacity=".96"/><circle cx="610" cy="95" r="55" fill="#fff" opacity=".14"/><circle cx="170" cy="420" r="90" fill="#fff" opacity=".08"/>
+<g filter="url(#s)" fill="#111827"><circle cx="390" cy="112" r="38"/><path d="M365 155Q415 132 450 178L493 245L455 269L415 214L398 310L330 305L345 225L290 270L258 240L330 165Z"/><path d="M345 292L325 455L380 455L405 325Z"/><path d="M397 305L470 455L525 455L445 280Z"/><path d="M275 225L190 155L165 185L255 265Z"/></g>
+<g transform="translate(535 270)" filter="url(#s)"><circle r="72" fill="#f8fafc"/><polygon points="0,-37 34,-12 21,28 -21,28 -34,-12" fill="#111827"/><path d="M0-72V-37M-68-20L-34-12M68-20L34-12M-45 55L-21 28M45 55L21 28" stroke="#111827" stroke-width="8"/></g>
+<path d="M145 90C255 45 365 50 455 100" fill="none" stroke="#fff" stroke-width="4" opacity=".5" stroke-dasharray="12 14"/>
+<text x="55" y="470" font-family="Arial,sans-serif" font-size="18" font-weight="800" fill="#fff" opacity=".85" letter-spacing="5">MOVE · TRAIN · EXPLORE</text>
+</svg>

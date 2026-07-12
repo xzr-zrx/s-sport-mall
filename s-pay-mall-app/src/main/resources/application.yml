@@ -1,0 +1,96 @@
+server:
+  address: 0.0.0.0
+  port: ${PORT:8091}
+  forward-headers-strategy: framework
+
+spring:
+  application:
+    name: s-pay-mall
+  datasource:
+    url: ${DATABASE_URL:jdbc:mysql://127.0.0.1:3306/s_pay_mall?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true}
+    username: ${DATABASE_USERNAME:root}
+    password: ${DATABASE_PASSWORD:root}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: ${DB_POOL_SIZE:10}
+      minimum-idle: 2
+  flyway:
+    enabled: ${FLYWAY_ENABLED:true}
+    baseline-on-migrate: true
+    locations: classpath:db/migration
+  jackson:
+    default-property-inclusion: non_null
+    time-zone: UTC
+
+mybatis:
+  mapper-locations: classpath:/mybatis/mapper/*.xml
+  config-location: classpath:/mybatis/config/mybatis-config.xml
+
+security:
+  jwt:
+    secret: ${JWT_SECRET:change-this-local-jwt-secret-at-least-32-characters}
+    expire-hours: ${JWT_EXPIRE_HOURS:24}
+
+app:
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173}
+  backend-public-url: ${BACKEND_PUBLIC_URL:http://localhost:8091}
+  frontend-public-url: ${FRONTEND_URL:http://localhost:5173}
+
+redis:
+  sdk:
+    config:
+      url: ${REDIS_URL:redis://127.0.0.1:6379}
+      username: ${REDIS_USERNAME:}
+      password: ${REDIS_PASSWORD:}
+      pool-size: ${REDIS_POOL_SIZE:16}
+      min-idle-size: 2
+
+mock-payment:
+  secret: ${MOCK_PAYMENT_SECRET:${JWT_SECRET:change-this-local-jwt-secret-at-least-32-characters}}
+
+alipay:
+  enabled: ${ALIPAY_ENABLED:false}
+  app-id: ${ALIPAY_APP_ID:}
+  merchant-private-key: ${ALIPAY_MERCHANT_PRIVATE_KEY:}
+  alipay-public-key: ${ALIPAY_PUBLIC_KEY:}
+  seller-id: ${ALIPAY_SELLER_ID:}
+  notify-url: ${ALIPAY_NOTIFY_URL:http://localhost:8091/api/v1/payments/alipay/notify}
+  return-url: ${ALIPAY_RETURN_URL:http://localhost:5173/payment-result}
+  gateway-url: ${ALIPAY_GATEWAY_URL:https://openapi-sandbox.dl.alipaydev.com/gateway.do}
+  sign-type: RSA2
+  charset: utf-8
+  format: json
+
+weixin:
+  config:
+    enabled: ${WEIXIN_ENABLED:false}
+    originalid: ${WEIXIN_ORIGINAL_ID:}
+    app-id: ${WEIXIN_APP_ID:}
+    app-secret: ${WEIXIN_APP_SECRET:}
+    template-id: ${WEIXIN_TEMPLATE_ID:}
+    verify-token: ${WEIXIN_VERIFY_TOKEN:change-me}
+    portal-url: ${FRONTEND_URL:http://localhost:5173}
+
+jobs:
+  scheduling-enabled: ${JOBS_SCHEDULING_ENABLED:true}
+  payment-reconcile-cron: ${PAYMENT_RECONCILE_CRON:0 */2 * * * ?}
+  timeout-close-cron: ${TIMEOUT_CLOSE_CRON:0 */5 * * * ?}
+  outbox-cron: ${OUTBOX_CRON:0 * * * * ?}
+  token: ${JOB_TOKEN:change-this-job-token}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+logging:
+  level:
+    root: INFO
+    cn.bugstack: INFO
+  config: classpath:logback-spring.xml

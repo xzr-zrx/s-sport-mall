@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" role="img" aria-label="SHUTTLE">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8fafc"/><stop offset="1" stop-color="#5edbd6" stop-opacity=".28"/></linearGradient><filter id="shadow"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-opacity=".16"/></filter></defs>
+<rect width="600" height="420" rx="32" fill="url(#bg)"/>
+<circle cx="80" cy="70" r="90" fill="#00a3a3" opacity=".08"/><circle cx="550" cy="365" r="120" fill="#5edbd6" opacity=".12"/>
+<g filter="url(#shadow)"><path d="M235 105L275 255H325L365 105L330 145L300 90L270 145Z" fill="#f8fafc" stroke="#00a3a3" stroke-width="9"/><path d="M275 255H325L340 310Q300 340 260 310Z" fill="#00a3a3"/><path d="M260 130L285 255M300 95V255M340 130L315 255" stroke="#5edbd6" stroke-width="6"/></g>
+<text x="42" y="55" font-family="Arial, sans-serif" font-size="24" font-weight="800" fill="#00a3a3" letter-spacing="3">SHUTTLE</text>
+<text x="44" y="385" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#475467" letter-spacing="2">BADMINTON</text>
+</svg>

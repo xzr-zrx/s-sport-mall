@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" role="img" aria-label="HYDRATE">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8fafc"/><stop offset="1" stop-color="#48cae4" stop-opacity=".28"/></linearGradient><filter id="shadow"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-opacity=".16"/></filter></defs>
+<rect width="600" height="420" rx="32" fill="url(#bg)"/>
+<circle cx="80" cy="70" r="90" fill="#0077b6" opacity=".08"/><circle cx="550" cy="365" r="120" fill="#48cae4" opacity=".12"/>
+<g filter="url(#shadow)"><rect x="260" y="95" width="80" height="55" rx="15" fill="#48cae4"/><path d="M245 145Q230 175 230 215V345Q230 380 265 380H335Q370 380 370 345V215Q370 175 355 145Z" fill="#0077b6"/><path d="M250 255Q300 225 350 255V315Q300 345 250 315Z" fill="#48cae4" opacity=".85"/></g>
+<text x="42" y="55" font-family="Arial, sans-serif" font-size="24" font-weight="800" fill="#0077b6" letter-spacing="3">HYDRATE</text>
+<text x="44" y="385" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#475467" letter-spacing="2">OUTDOOR</text>
+</svg>

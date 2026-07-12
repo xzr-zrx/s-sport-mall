@@ -1,0 +1,4 @@
+jobs:
+  scheduling-enabled: false
+alipay:
+  enabled: false

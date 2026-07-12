@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bugstack.infrastructure.dao.IOutboxDao">
+    <insert id="insert">
+        insert into outbox_event(aggregate_id,event_type,payload,status,retry_count,create_time,update_time)
+        values(#{aggregateId},#{eventType},#{payload},'PENDING',0,now(),now())
+    </insert>
+    <select id="listPendingIds" resultType="java.lang.Long">select id from outbox_event where status='PENDING' order by id limit 50</select>
+    <update id="markPublished">update outbox_event set status='PUBLISHED',published_time=now(),update_time=now() where id=#{id} and status='PENDING'</update>
+</mapper>

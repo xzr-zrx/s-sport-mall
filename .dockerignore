@@ -1,0 +1,10 @@
+.git
+.github
+**/target
+**/node_modules
+**/dist
+*.zip
+*.log
+.idea
+.vscode
+s-pay-mall-web

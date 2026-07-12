@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" role="img" aria-label="SMASH">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8fafc"/><stop offset="1" stop-color="#6eb6ff" stop-opacity=".28"/></linearGradient><filter id="shadow"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-opacity=".16"/></filter></defs>
+<rect width="600" height="420" rx="32" fill="url(#bg)"/>
+<circle cx="80" cy="70" r="90" fill="#1677ff" opacity=".08"/><circle cx="550" cy="365" r="120" fill="#6eb6ff" opacity=".12"/>
+<g filter="url(#shadow)"><ellipse cx="330" cy="160" rx="78" ry="105" fill="none" stroke="#1677ff" stroke-width="14"/><path d="M290 75L370 245M260 115L395 205M260 205L390 115M295 260L235 338" stroke="#6eb6ff" stroke-width="5" opacity=".9"/><path d="M305 245L235 338" stroke="#1677ff" stroke-width="22" stroke-linecap="round"/><rect x="210" y="320" width="45" height="90" rx="18" transform="rotate(40 210 320)" fill="#111827"/></g>
+<text x="42" y="55" font-family="Arial, sans-serif" font-size="24" font-weight="800" fill="#1677ff" letter-spacing="3">SMASH</text>
+<text x="44" y="385" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#475467" letter-spacing="2">BADMINTON</text>
+</svg>

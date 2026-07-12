@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bugstack.infrastructure.dao.IUserDao">
+    <resultMap id="userMap" type="cn.bugstack.infrastructure.dao.po.UserAccount">
+        <id column="id" property="id"/><result column="username" property="username"/>
+        <result column="password_hash" property="passwordHash"/><result column="nickname" property="nickname"/>
+        <result column="role" property="role"/><result column="wechat_open_id" property="wechatOpenId"/>
+        <result column="status" property="status"/><result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+    <select id="findByUsername" resultMap="userMap">select * from user_account where username = #{username} limit 1</select>
+    <select id="findById" resultMap="userMap">select * from user_account where id = #{id} limit 1</select>
+    <select id="findByWechatOpenId" resultMap="userMap">select * from user_account where wechat_open_id = #{openId} limit 1</select>
+    <insert id="insert" parameterType="cn.bugstack.infrastructure.dao.po.UserAccount" useGeneratedKeys="true" keyProperty="id">
+        insert into user_account(username,password_hash,nickname,role,wechat_open_id,status,create_time,update_time)
+        values(#{username},#{passwordHash},#{nickname},#{role},#{wechatOpenId},#{status},now(),now())
+    </insert>
+    <update id="bindWechat">update user_account set wechat_open_id=#{openId},update_time=now() where id=#{id}</update>
+</mapper>

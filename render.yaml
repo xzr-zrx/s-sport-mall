@@ -1,0 +1,56 @@
+services:
+  - type: web
+    name: s-pay-mall-api
+    runtime: docker
+    dockerfilePath: ./s-pay-mall-app/Dockerfile
+    dockerContext: .
+    healthCheckPath: /actuator/health
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: DATABASE_USERNAME
+        sync: false
+      - key: DATABASE_PASSWORD
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false
+      - key: BACKEND_PUBLIC_URL
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
+      - key: MOCK_PAYMENT_SECRET
+        generateValue: true
+      - key: ALIPAY_ENABLED
+        value: "false"
+      - key: ALIPAY_APP_ID
+        sync: false
+      - key: ALIPAY_MERCHANT_PRIVATE_KEY
+        sync: false
+      - key: ALIPAY_PUBLIC_KEY
+        sync: false
+      - key: ALIPAY_NOTIFY_URL
+        sync: false
+      - key: ALIPAY_RETURN_URL
+        sync: false
+      - key: JOBS_SCHEDULING_ENABLED
+        value: "true"
+      - key: JOB_TOKEN
+        generateValue: true
+
+  - type: web
+    name: s-pay-mall-web
+    runtime: static
+    rootDir: s-pay-mall-web
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        sync: false
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

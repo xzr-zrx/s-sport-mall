@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bugstack.infrastructure.dao.ICartDao">
+    <resultMap id="cartMap" type="cn.bugstack.infrastructure.dao.po.CartItem">
+        <id column="id" property="id"/><result column="user_id" property="userId"/>
+        <result column="product_id" property="productId"/><result column="product_name" property="productName"/>
+        <result column="product_cover" property="productCover"/><result column="unit_price" property="unitPrice"/>
+        <result column="quantity" property="quantity"/><result column="stock" property="stock"/>
+        <result column="selected" property="selected"/>
+    </resultMap>
+    <sql id="cartSelect">
+        select c.id,c.user_id,c.product_id,p.name product_name,p.cover_url product_cover,p.price unit_price,
+               c.quantity,p.stock,c.selected
+        from cart_item c join product p on p.id=c.product_id
+    </sql>
+    <select id="listByUser" resultMap="cartMap"><include refid="cartSelect"/> where c.user_id=#{userId} order by c.id desc</select>
+    <select id="listByIds" resultMap="cartMap">
+        <include refid="cartSelect"/> where c.user_id=#{userId} and c.id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">#{id}</foreach>
+    </select>
+    <insert id="upsert">
+        insert into cart_item(user_id,product_id,quantity,selected,create_time,update_time)
+        values(#{userId},#{productId},#{quantity},1,now(),now())
+        on duplicate key update quantity=least(quantity+values(quantity),99),update_time=now()
+    </insert>
+    <update id="updateQuantity">update cart_item set quantity=#{quantity},update_time=now() where id=#{id} and user_id=#{userId}</update>
+    <delete id="delete">delete from cart_item where id=#{id} and user_id=#{userId}</delete>
+    <delete id="deleteBatch">
+        delete from cart_item where user_id=#{userId} and id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">#{id}</foreach>
+    </delete>
+</mapper>
