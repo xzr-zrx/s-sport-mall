@@ -6,19 +6,19 @@ export interface SportCategory {
 }
 
 export const SPORT_CATEGORIES: SportCategory[] = [
-  { value: 'RUNNING', label: '跑步装备', icon: '🏃', description: '从日常慢跑到进阶训练，轻快迈出每一步' },
-  { value: 'BASKETBALL', label: '篮球装备', icon: '🏀', description: '球鞋、篮球与训练装备，释放球场能量' },
-  { value: 'FOOTBALL', label: '足球装备', icon: '⚽', description: '稳定控球与快速启动，为绿茵场而生' },
-  { value: 'BADMINTON', label: '羽毛球装备', icon: '🏸', description: '轻量球拍与耐打用球，提升挥拍体验' },
-  { value: 'FITNESS', label: '健身训练', icon: '🏋️', description: '力量、瑜伽与居家训练的实用选择' },
-  { value: 'OUTDOOR', label: '户外运动', icon: '⛰️', description: '陪伴徒步、骑行和周末探索的可靠装备' },
-  { value: 'PROTECTION', label: '运动护具', icon: '🛡️', description: '科学支撑关键部位，让训练更安心' },
-  { value: 'SPORT_ACCESSORIES', label: '运动配件', icon: '🎽', description: '补齐运动细节，打造更完整的装备组合' }
+  { value: 'MMA', label: '综合格斗', icon: '🥊', description: 'MMA 训练手套、紧身衣、短裤、护齿等综合格斗装备' },
+  { value: 'BOXING', label: '拳击装备', icon: '🥊', description: '拳击手套、绑手带、速度球、沙袋等拳击训练器材' },
+  { value: 'KICKBOXING', label: '踢拳 · 泰拳', icon: '🦵', description: '泰拳护胫、拳击手套、护头等站立打击训练装备' },
+  { value: 'BJJ', label: '柔术 · 摔跤', icon: '🤼', description: '巴西柔术道服、无道服训练服、护膝等 grappling 装备' },
+  { value: 'PROTECTION', label: '防护装备', icon: '🛡️', description: '护齿、护裆、头部护具、护膝等全方位训练护具' },
+  { value: 'FITNESS', label: '力量 · 体能', icon: '🏋️', description: '壶铃、跳绳、反应球、药球等体能训练器材' },
+  { value: 'RECOVERY', label: '运动恢复', icon: '💆', description: '泡沫轴、筋膜枪、拉伸带等训练后恢复辅助工具' },
+  { value: 'MERCH', label: '主题周边', icon: '👕', description: '格斗主题 T 恤、帽子、背包等综合格斗文化周边商品' }
 ]
 
 const categoryMap = new Map(SPORT_CATEGORIES.map((item) => [item.value, item.label]))
 
 export function getCategoryLabel(value?: string): string {
-  if (!value) return '运动装备'
-  return categoryMap.get(value) ?? '运动装备'
+  if (!value) return '格斗装备'
+  return categoryMap.get(value) ?? '格斗装备'
 }

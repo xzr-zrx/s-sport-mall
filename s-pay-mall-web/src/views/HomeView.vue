@@ -53,31 +53,30 @@ onMounted(loadProducts)
   <div class="home-page">
     <section class="hero-section page-shell">
       <div class="hero-section__content">
-        <span class="eyebrow">SPORTS EQUIPMENT STORE</span>
-        <h1>为每一次热爱，<br><em>装备更好的自己</em></h1>
-        <p>从跑步、球类到健身与户外，精选实用体育用品，让训练更专注，让突破更有底气。</p>
+        <span class="eyebrow">MMA FIGHT STORE</span>
+        <h1><span>斗牛士综合格斗装备库</span><br><em>为每一次出拳、每一次突破而备</em></h1>
+        <p>从 MMA 训练手套、拳击装备到柔术道服与体能器材，精选格斗训练实用装备，助你打磨每一刻技术。</p>
         <div class="hero-section__actions">
           <el-button type="primary" size="large" @click="goShopping">立即选购</el-button>
           <el-button size="large" @click="scrollToFeatured">查看热门商品</el-button>
         </div>
         <div class="hero-section__metrics">
-          <div><strong>8</strong><span>运动分类</span></div>
+          <div><strong>8</strong><span>格斗分类</span></div>
           <div><strong>100%</strong><span>正品严选</span></div>
           <div><strong>30 min</strong><span>支付保护期</span></div>
         </div>
       </div>
       <div class="hero-section__visual" aria-hidden="true">
-        <img src="/images/hero-sport.svg" alt="">
-        <span class="hero-float hero-float--top">今日开练</span>
-        <span class="hero-float hero-float--bottom">MOVE WITH PASSION</span>
+        <img src="/images/mma-hero.jpg" alt="综合格斗训练">
+        <div class="hero-section__visual-overlay"></div>
       </div>
     </section>
 
     <section class="section page-shell">
       <div class="section-heading">
         <div>
-          <span class="section-kicker">按运动探索</span>
-          <h2>找到你的主场装备</h2>
+          <span class="section-kicker">按格斗类别探索</span>
+          <h2>找到你的训练装备</h2>
         </div>
         <router-link class="text-link" :to="{ name: 'products' }">查看全部商品 <span>→</span></router-link>
       </div>
@@ -91,7 +90,7 @@ onMounted(loadProducts)
         <div class="section-heading">
           <div>
             <span class="section-kicker">人气精选</span>
-            <h2>热门运动装备</h2>
+            <h2>热门格斗装备</h2>
             <p>从真实商品接口加载，为你的训练快速补齐装备。</p>
           </div>
           <router-link class="text-link" :to="{ name: 'products' }">更多好物 <span>→</span></router-link>
@@ -114,7 +113,7 @@ onMounted(loadProducts)
         <div>
           <span class="section-kicker">NEW ARRIVALS</span>
           <h2>新品推荐</h2>
-          <p>按商品创建时间展示最近上架的运动装备。</p>
+          <p>按商品创建时间展示最近上架的格斗装备。</p>
         </div>
       </div>
       <ProductGridSkeleton v-if="loading" :count="4" />

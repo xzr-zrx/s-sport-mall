@@ -20,7 +20,7 @@ const page = ref(1)
 const pageSize = 12
 
 const activeCategoryLabel = computed(() =>
-  SPORT_CATEGORIES.find((item) => item.value === category.value)?.label ?? '全部运动装备'
+  SPORT_CATEGORIES.find((item) => item.value === category.value)?.label ?? '全部格斗装备'
 )
 
 function syncFromRoute(): void {
@@ -109,11 +109,11 @@ onMounted(async () => {
   <div class="catalog-page page-shell page-section">
     <div class="catalog-hero">
       <div>
-        <span class="section-kicker">SPORTS COLLECTION</span>
+        <span class="section-kicker">FIGHT GEAR COLLECTION</span>
         <h1>{{ activeCategoryLabel }}</h1>
-        <p>按运动类型、关键词与价格快速筛选，找到适合自己的训练装备。</p>
+        <p>按格斗类别、关键词与价格快速筛选，找到适合你的训练装备。</p>
       </div>
-      <div class="catalog-hero__mark">GO<br>MOVE</div>
+      <div class="catalog-hero__mark">F<br>IGHT</div>
     </div>
 
     <div class="catalog-toolbar">
@@ -122,7 +122,7 @@ onMounted(async () => {
           v-model="keyword"
           clearable
           size="large"
-          placeholder="搜索跑鞋、篮球、羽毛球拍……"
+          placeholder="搜索拳套、护齿、道服、训练器材……"
           @keyup.enter="submitSearch"
           @clear="submitSearch"
         >
@@ -155,7 +155,7 @@ onMounted(async () => {
       <button v-if="keyword || category || sort !== 'DEFAULT'" type="button" @click="clearFilters">清除筛选</button>
     </div>
 
-    <ProductGridSkeleton v-if="loading" :count="8" />
+    <ProductGridSkeleton v-if="loading" :count="10" />
     <div v-else-if="failed" class="state-panel">
       <strong>无法获取商品列表</strong>
       <p>网络连接异常，请检查后重新加载。</p>

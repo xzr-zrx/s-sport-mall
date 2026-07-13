@@ -1,8 +1,171 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520">
-<defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff5a36"/><stop offset="1" stop-color="#ffb36b"/></linearGradient><filter id="s"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-opacity=".22"/></filter></defs>
-<circle cx="445" cy="255" r="205" fill="url(#g1)" opacity=".96"/><circle cx="610" cy="95" r="55" fill="#fff" opacity=".14"/><circle cx="170" cy="420" r="90" fill="#fff" opacity=".08"/>
-<g filter="url(#s)" fill="#111827"><circle cx="390" cy="112" r="38"/><path d="M365 155Q415 132 450 178L493 245L455 269L415 214L398 310L330 305L345 225L290 270L258 240L330 165Z"/><path d="M345 292L325 455L380 455L405 325Z"/><path d="M397 305L470 455L525 455L445 280Z"/><path d="M275 225L190 155L165 185L255 265Z"/></g>
-<g transform="translate(535 270)" filter="url(#s)"><circle r="72" fill="#f8fafc"/><polygon points="0,-37 34,-12 21,28 -21,28 -34,-12" fill="#111827"/><path d="M0-72V-37M-68-20L-34-12M68-20L34-12M-45 55L-21 28M45 55L21 28" stroke="#111827" stroke-width="8"/></g>
-<path d="M145 90C255 45 365 50 455 100" fill="none" stroke="#fff" stroke-width="4" opacity=".5" stroke-dasharray="12 14"/>
-<text x="55" y="470" font-family="Arial,sans-serif" font-size="18" font-weight="800" fill="#fff" opacity=".85" letter-spacing="5">MOVE · TRAIN · EXPLORE</text>
+<defs>
+  <!-- Brand gradients -->
+  <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#181f2b"/>
+    <stop offset="100%" stop-color="#0d1119"/>
+  </linearGradient>
+  <linearGradient id="orangeGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#ff5a36"/>
+    <stop offset="100%" stop-color="#ff4f2e"/>
+  </linearGradient>
+  <linearGradient id="orangeLight" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#ff795f"/>
+    <stop offset="100%" stop-color="#ff4f2e"/>
+  </linearGradient>
+  <linearGradient id="gloveGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#ff4f2e"/>
+    <stop offset="60%" stop-color="#e63a1a"/>
+    <stop offset="100%" stop-color="#c42a0c"/>
+  </linearGradient>
+  <linearGradient id="gloveShadow" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#c42a0c"/>
+    <stop offset="100%" stop-color="#8a1a05"/>
+  </linearGradient>
+  <linearGradient id="bagGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#263238"/>
+    <stop offset="100%" stop-color="#1a2329"/>
+  </linearGradient>
+  <linearGradient id="bagHighlight" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="rgba(255,255,255,0)" stop-opacity="0"/>
+    <stop offset="50%" stop-color="rgba(255,255,255,0.08)" stop-opacity="0.08"/>
+    <stop offset="100%" stop-color="rgba(255,255,255,0)" stop-opacity="0"/>
+  </linearGradient>
+  <filter id="shadowLg">
+    <feDropShadow dx="0" dy="12" stdDeviation="16" flood-opacity=".3"/>
+  </filter>
+  <filter id="shadowSm">
+    <feDropShadow dx="0" dy="6" stdDeviation="8" flood-opacity=".16"/>
+  </filter>
+  <filter id="glow">
+    <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#ff4f2e" flood-opacity=".4"/>
+  </filter>
+</defs>
+
+<!-- Background -->
+<rect width="760" height="520" rx="32" fill="url(#bgGrad)"/>
+
+<!-- Ambient glow circles -->
+<circle cx="620" cy="80" r="160" fill="#ff4f2e" opacity=".04"/>
+<circle cx="120" cy="460" r="120" fill="#ff4f2e" opacity=".06"/>
+<circle cx="700" cy="370" r="80" fill="#ff4f2e" opacity=".05"/>
+
+<!-- Grid pattern overlay -->
+<g opacity=".06">
+  <line x1="0" y1="0" x2="760" y2="0" stroke="#fff" stroke-width=".5" transform="translate(0,0)"/>
+  <line x1="0" y1="0" x2="760" y2="0" stroke="#fff" stroke-width=".5" transform="translate(0,52)"/>
+  <line x1="0" y1="0" x2="760" y2="0" stroke="#fff" stroke-width=".5" transform="translate(0,104)"/>
+  <line x1="0" y1="0" x2="760" y2="0" stroke="#fff" stroke-width=".5" transform="translate(0,156)"/>
+  <line x1="0" y1="0" x2="760" y2="0" stroke="#fff" stroke-width=".5" transform="translate(0,208)"/>
+  <line x1="0" y1="0" x2="760" y2="0" stroke="#fff" stroke-width=".5" transform="translate(0,260)"/>
+  <line x1="0" y1="0" x2="760" y2="0" stroke="#fff" stroke-width=".5" transform="translate(0,312)"/>
+  <line x1="0" y1="0" x2="760" y2="0" stroke="#fff" stroke-width=".5" transform="translate(0,364)"/>
+  <line x1="0" y1="0" x2="760" y2="0" stroke="#fff" stroke-width=".5" transform="translate(0,416)"/>
+  <line x1="0" y1="0" x2="760" y2="0" stroke="#fff" stroke-width=".5" transform="translate(0,468)"/>
+</g>
+
+<!-- === Fighter silhouette (kicking pose) === -->
+<g filter="url(#shadowLg)" transform="translate(240, 145)">
+  <!-- Body -->
+  <ellipse cx="60" cy="105" rx="42" ry="68" fill="#1a2329"/>
+  <!-- Head -->
+  <circle cx="60" cy="26" r="28" fill="#263238"/>
+  <!-- Lead leg (standing) -->
+  <path d="M36,168 L28,245 L48,245 L52,170 Z" fill="#1a2329"/>
+  <!-- Rear leg (chambered kick) -->
+  <path d="M75,170 L95,195 L80,210 L60,185 Z" fill="#1a2329"/>
+  <!-- Lead arm (guard up) -->
+  <path d="M38,65 L12,42 L18,30 L42,52 Z" fill="#1a2329"/>
+  <!-- Rear arm (guard up) -->
+  <path d="M80,70 L100,48 L90,36 L70,56 Z" fill="#1a2329"/>
+  <!-- Gloves (orange) -->
+  <circle cx="14" cy="34" r="12" fill="url(#gloveGrad)" filter="url(#shadowSm)"/>
+  <circle cx="98" cy="40" r="12" fill="url(#gloveGrad)" filter="url(#shadowSm)"/>
+  <!-- Shin guard on kicking leg -->
+  <path d="M62,188 L78,212 L70,220 L55,196 Z" fill="#ff4f2e" opacity=".7"/>
+</g>
+
+<!-- === Heavy bag (hanging from top, leaning slightly) === -->
+<g transform="translate(495, 0)">
+  <!-- Chain -->
+  <line x1="48" y1="0" x2="48" y2="62" stroke="#888" stroke-width="2.5" opacity=".6"/>
+  <line x1="62" y1="0" x2="62" y2="62" stroke="#888" stroke-width="2.5" opacity=".6"/>
+  <!-- Bag body -->
+  <rect x="30" y="65" width="50" height="160" rx="10" ry="12" fill="url(#bagGrad)" filter="url(#shadowSm)"/>
+  <!-- Bag highlight -->
+  <rect x="30" y="65" width="50" height="160" rx="10" ry="12" fill="url(#bagHighlight)"/>
+  <!-- Bag top cap -->
+  <ellipse cx="55" cy="65" rx="25" ry="7" fill="#1a2329" stroke="#2c3e49" stroke-width="1.5"/>
+  <!-- Bag bottom cap -->
+  <ellipse cx="55" cy="225" rx="25" ry="7" fill="#111" stroke="#2c3e49" stroke-width="1.5"/>
+  <!-- Bag straps -->
+  <path d="M40,65 L40,85" stroke="#c42a0c" stroke-width="2.5" opacity=".6"/>
+  <path d="M70,65 L70,85" stroke="#c42a0c" stroke-width="2.5" opacity=".6"/>
+  <!-- Impact mark (where the kick/punch lands) -->
+  <ellipse cx="55" cy="140" rx="18" ry="22" fill="none" stroke="#ff4f2e" stroke-width="1.5" opacity=".35"/>
+  <ellipse cx="55" cy="140" rx="10" ry="14" fill="#ff4f2e" opacity=".12"/>
+  <!-- Impact lines -->
+  <g stroke="#ff4f2e" stroke-width="1.5" opacity=".5" stroke-linecap="round">
+    <line x1="8" y1="118" x2="18" y2="128"/>
+    <line x1="8" y1="155" x2="18" y2="150"/>
+    <line x1="15" y1="133" x2="23" y2="135"/>
+    <line x1="15" y1="150" x2="23" y2="145"/>
+  </g>
+</g>
+
+<!-- === Boxing glove (floating large, foreground, right side) === -->
+<g filter="url(#shadowLg)" transform="translate(590, 240)">
+  <!-- Thumb pocket -->
+  <ellipse cx="32" cy="42" rx="16" ry="22" fill="url(#gloveShadow)" transform="rotate(20, 32, 42)"/>
+  <!-- Main glove body -->
+  <ellipse cx="15" cy="35" rx="30" ry="38" fill="url(#gloveGrad)"/>
+  <!-- Wrist cuff -->
+  <rect x="-12" y="48" width="48" height="18" rx="6" ry="5" fill="#1a2329"/>
+  <!-- Cuff strap -->
+  <rect x="-10" y="52" width="44" height="4" rx="2" fill="url(#orangeLight)"/>
+  <!-- Glove highlight (top shine) -->
+  <ellipse cx="10" cy="14" rx="14" ry="8" fill="#fff" opacity=".12" transform="rotate(-15, 10, 14)"/>
+  <!-- Glove seams -->
+  <line x1="8" y1="8" x2="5" y2="60" stroke="#c42a0c" stroke-width="1" opacity=".3"/>
+  <!-- Lace holes -->
+  <circle cx="2" cy="38" r="2" fill="#8a1a05"/>
+  <circle cx="0" cy="44" r="2" fill="#8a1a05"/>
+  <circle cx="2" cy="50" r="2" fill="#8a1a05"/>
+</g>
+
+<!-- === Speed / motion lines === -->
+<g stroke="url(#orangeLight)" stroke-width="2" opacity=".35" stroke-linecap="round">
+  <line x1="120" y1="280" x2="160" y2="295"/>
+  <line x1="130" y1="300" x2="170" y2="310"/>
+  <line x1="135" y1="320" x2="165" y2="325"/>
+</g>
+
+<!-- === Small decorative gear icons (hexagons) === -->
+<g fill="none" stroke="#ff4f2e" stroke-width="1.5" opacity=".2" transform="translate(48, 180)">
+  <polygon points="0,-10 9,-5 9,5 0,10 -9,5 -9,-5"/>
+</g>
+<g fill="none" stroke="#ff4f2e" stroke-width="1.5" opacity=".15" transform="translate(660, 420)">
+  <polygon points="0,-14 12,-7 12,7 0,14 -12,7 -12,-7"/>
+</g>
+
+<!-- === Bottom floating label === -->
+<g transform="translate(56, 458)">
+  <rect x="0" y="0" width="172" height="32" rx="16" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+  <text x="86" y="20" font-family="Arial, sans-serif" font-size="11" font-weight="750" fill="#fff" letter-spacing="3" text-anchor="middle" opacity=".85">MMA GEAR · 格斗装备</text>
+</g>
+
+<!-- === Top right circular badge === -->
+<g transform="translate(672, 68)">
+  <circle r="38" fill="none" stroke="#ff4f2e" stroke-width="2" opacity=".25"/>
+  <circle r="30" fill="rgba(255,79,46,.08)" stroke="#ff4f2e" stroke-width="1.5" opacity=".5"/>
+  <text x="0" y="-6" font-family="Arial, sans-serif" font-size="10" font-weight="800" fill="#ff4f2e" text-anchor="middle" letter-spacing="1">NEW</text>
+  <text x="0" y="8" font-family="Arial, sans-serif" font-size="12" font-weight="900" fill="#ff4f2e" text-anchor="middle" letter-spacing="1">2026</text>
+</g>
+
+<!-- === Star/burst dots === -->
+<circle cx="185" cy="115" r="3" fill="#ff4f2e" opacity=".3"/>
+<circle cx="205" cy="130" r="1.5" fill="#ff4f2e" opacity=".2"/>
+<circle cx="395" cy="95" r="2" fill="#fff" opacity=".15"/>
+<circle cx="555" cy="390" r="2" fill="#ff4f2e" opacity=".25"/>
+
 </svg>

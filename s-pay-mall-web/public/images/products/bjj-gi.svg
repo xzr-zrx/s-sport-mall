@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" role="img" aria-label="MMA">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8fafc"/><stop offset="1" stop-color="#ff4f2e" stop-opacity=".18"/></linearGradient><filter id="shadow"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-opacity=".16"/></filter></defs>
+<rect width="600" height="420" rx="32" fill="url(#bg)"/>
+<circle cx="80" cy="70" r="90" fill="#ff4f2e" opacity=".06"/><circle cx="550" cy="365" r="120" fill="#ff4f2e" opacity=".08"/>
+<g filter="url(#shadow)"><circle cx="300" cy="205" r="110" fill="#263238" opacity=".12"/><path d="M220 250Q300 115 380 250Q300 325 220 250Z" fill="#263238"/><circle cx="300" cy="185" r="35" fill="#ff4f2e"/></g>
+<text x="42" y="55" font-family="Arial, sans-serif" font-size="24" font-weight="800" fill="#263238" letter-spacing="3">bjj-gi</text>
+<text x="44" y="385" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#475467" letter-spacing="2">斗牛士综合格斗商城</text>
+</svg>
