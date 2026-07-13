@@ -25,7 +25,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to) => {
-  document.title = `${String(to.meta.title || '商城')} - S-SPORT` 
+  document.title = `${String(to.meta.title || '商城')} - SportHub Mall` 
   if (to.meta.auth && !localStorage.getItem('token')) {
     return { name: 'login', query: { redirect: to.fullPath } }
   }

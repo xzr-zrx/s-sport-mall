@@ -42,16 +42,16 @@ onMounted(bootstrap)
   <div class="site-layout">
     <div class="announcement-bar">
       <div class="page-shell announcement-bar__inner">
-        <span>为热爱出发 · 综合体育用品商城</span>
+        <span>为热爱出发 · SportHub 综合体育商城</span>
         <span class="announcement-bar__right">正品严选 · 安全支付 · 订单状态可靠保障</span>
       </div>
     </div>
 
     <header class="site-header">
       <div class="page-shell site-header__inner">
-        <router-link class="brand" :to="{ name: 'home' }" aria-label="S-SPORT 商城首页">
+        <router-link class="brand" :to="{ name: 'home' }" aria-label="SportHub Mall 商城首页">
           <span class="brand__mark">S</span>
-          <span class="brand__text"><strong>S-SPORT</strong><small>运动装备商城</small></span>
+          <span class="brand__text"><strong>SportHub Mall</strong><small>综合体育商城</small></span>
         </router-link>
 
         <nav class="desktop-nav" aria-label="主导航">
@@ -135,15 +135,15 @@ onMounted(bootstrap)
         <div class="site-footer__brand">
           <div class="brand brand--footer">
             <span class="brand__mark">S</span>
-            <span class="brand__text"><strong>S-SPORT</strong><small>运动装备商城</small></span>
+            <span class="brand__text"><strong>SportHub Mall</strong><small>综合体育商城</small></span>
           </div>
-          <p>S-SPORT 专注于跑步、球类、健身与户外运动装备，为运动爱好者提供实用、可靠的体育用品。</p>
+          <p>SportHub Mall 专注于跑步、球类、健身与户外运动装备，为运动爱好者提供实用、可靠的体育用品。</p>
         </div>
         <div><h3>商城服务</h3><router-link :to="{ name: 'products' }">全部商品</router-link><router-link :to="{ name: 'products', query: { category: 'RUNNING' } }">运动分类</router-link><router-link :to="{ name: 'cart' }">购物车</router-link><router-link :to="{ name: 'orders' }">我的订单</router-link></div>
         <div><h3>服务保障</h3><span>正品保障</span><span>安全支付</span><span>快速发货</span><span>售后服务</span></div>
         <div><h3>用户帮助</h3><span>购物指南</span><span>支付说明</span><span>订单查询</span><span>联系客服</span></div>
       </div>
-      <div class="page-shell site-footer__bottom">© 2026 S-SPORT 体育用品商城<br>商品图片及信息仅用于商城展示</div>
+      <div class="page-shell site-footer__bottom">© 2026 SportHub Mall 综合体育商城<br>商品图片及信息仅用于商城展示</div>
     </footer>
   </div>
 </template>
